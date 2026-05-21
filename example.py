@@ -1,62 +1,111 @@
-#  Reverse Each word in a string
-# ques 1)  WAP to reverse each word in a string
+# Remove leading Zeros from a list of integers
+# Ques) Write a function to remove leading zeros from a list of integers
+# i/o = [0,0,1,2,0,3,0,0,4]
 
-#input: "Hello world"
-# output: "olleH dlrow"
+num =  [0,0,1,2,0,3,0,0,4]
+i = 0
+while i<len(num) and num[i] == 0:
+        i+=1
+result = num[i:]
+print(result)  # ans: [1, 2, 0, 3, 0, 0, 4]
 
-text = "Hello world"
-result = " ".join(word[::-1] for word in text.split())
-print(f'"{result}"')
+# or
 
-#=================================================================================
-# ques2)  Check for valid parenthesis
+def remove_leading_zeros(nums):
+    i = 0
+    
+    while i < len(nums) and nums[i] == 0:
+        i += 1
+    
+    return nums[i:]
+nums = [0,0,1,2,0,3,0,0,4]
+print(remove_leading_zeros(nums))
 
-# WAp to check if a string containing () ia valid
-#input: "((()))"
-# output: valid
+#==========================================================================
 
-w = input("Enter parenthesis: ")
-if "(" in w or ")" in w:
-    if w.count("(") == w.count(")"):
-        print('"Valid"')
-    else:
-        print('"Not valid"')
+# Find the first missing positive integer
+
+# Ques) write a function to find missing positive integer in a list of unsorted integers
+
+# i/o = [3,4,-1,1]
+# o/p = 2
+
+
+def first_missing_positive(nums):
+    num_set = set(nums)   # Converts the list into a set
+    i = 1
+    while i in num_set:
+        i += 1
+    
+    return i
+nums = [3, 4, -1, 1]
+print(first_missing_positive(nums))  # ans: 2
+
+#==========================================================================
+
+''' 
+# EXCEPTION HANDLING: 
+
+* TYPES OF ERROR:
+  1) RUNTIME ERROR
+  2) COMPILE TIME ERROR
+
+  INTERVIEW QUES:
+
+1) WHAT IS RUNTIME ERROR? AND HOW IT IS HANDLED  
+
+Log data is commonly used to manage and debug runtime errors.
+
+In real-world applications:
+
+runtime errors are usually recorded in log files so developers can analyze and fix issues later. 
+
+
+2) Why Do We Need User-Defined Exceptions?
+
+User-defined exceptions improve code readability, maintainability, and help handle business rules more meaningfully. 
+They allow developers to define specific error types for custom scenarios.'''
+
+
+try:
+     a = int(input("enter 1st number: "))
+     b = int(input("enter 2nd number: "))
+     print(a/b)
+except ZeroDivisionError:
+     print("invalid")     
+except ValueError:
+     print("enter only integer value: ")  
+except:
+     print("ABC")   
 else:
-    print('"Invalid input"')  
+     print("everything is ok")       
+#or
 
-# w = input("enter parenthesis: ")
-# if "(" in w or ")" in w:
-#         if w.count("(") == w.count(")"):
-#             print("valid")
-#         else:
-#             print("not valid")
-# else: 
-#         print("inavlid input")     
-# 
-#=================================================================================
-#Find all duplicates in a list
+try:
+     a = int(input("enter 1st number: "))
+     b = int(input("enter 2nd number: "))
+     print(a/b)
+except (ZeroDivisionError, ValueError) as msg:
+     print("invalid")
 
-# Ques 3) write a function to find all the elements that appear mor than once in a list
-# input: [4,3,2,7,8,2,1,5,5]
-# Output: [2,5]
-# 
-nums = [4,3,2,7,8,2,1,5,5]
-duplicates = []
-for i in nums:
-    if nums.count(i) > 1 and i not in duplicates:
-        duplicates.append(i)
-print(duplicates)        
+''''
+* Finally --
 
-#=================================================================================
+    depends on requirement
+    eg: in netbanking -if we close the tab once then if we again visit netbanking site we need to login in again. 
 
-# sort dictionary by key or value:
+'''     
 
-# ques 4) write a function to sort a dictionary by keys or values in asc or desc order
-# input: {"C":3,"B":2,"A":1}
-
-data = {"C":3,"B":2,"A":1}
-my_dict = dict(sorted(data.items()))
-print(my_dict)  # ans: {'A': 1, 'B': 2, 'C': 3}
-
-my_dict = dict(sorted(data.items(), reverse = True))
-print(my_dict) # ans: {'C': 3, 'B': 2, 'A': 1}
+try:
+     a = int(input("enter 1st number: "))
+     b = int(input("enter 2nd number: "))
+     print(a/b)
+except ZeroDivisionError:
+     print("invalid")     
+except ValueError:
+     print("enter only integer value: ")  
+except:
+     print("ABC")   
+else:
+     print("everything is ok")  
+finally("i always execute.")     
